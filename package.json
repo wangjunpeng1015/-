@@ -1,7 +1,26 @@
 {
+  "name": "danmu",
+  "version": "1.0.0",
+  "description": "进去redis 点击\r #启动ws\r node app.js\r #打开页面",
+  "main": "index.js",
   "dependencies": {
     "express": "^4.16.4",
     "redis": "^2.8.0",
     "ws": "^6.1.2"
-  }
+  },
+  
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangjunpeng1015/-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wangjunpeng1015/-/issues"
+  },
+  "homepage": "https://github.com/wangjunpeng1015/-#readme"
 }

@@ -18,7 +18,7 @@ class CanvasBarrage {
         // 设置默认参数，如果没有传就给带上
         let defOpts = {
             color: '#e91e63',
-            speed: 1.5,
+            speed: (Math.random()*(10-1+1)+1,10),
             opacity: 0.5,
             fontSize: 20,
             data: []
