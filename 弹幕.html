@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .main {
+            position: relative;
+        }
+
+        #canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>听妈妈的话 - 周杰伦</h1>
+        <div class="main">
+            <canvas id="canvas"></canvas>
+            <video src="source/mv.mp4" id="video" controls width="720" height="480"></video>
+        </div>
+        <div class="content">
+            <input type="text" id="text">
+            <input type="button" value="发弹幕" id="btn">
+            <input type="color" id="color">
+            <input type="range" id="range" max="40" min="20">
+        </div>
+    </div>
+
+</body>
+<script src="js/barrage.js"></script>
+<script src="js/websocket.js"></script>
+
+<script>
+    let data = [
+        { value: '周杰伦的听妈妈的话，让我反复循环再循环', time: 5, color: 'red', speed: 1, fontSize: 22 },
+        { value: '想快快长大，才能保护她', time: 10, color: '#00a1f5', speed: 1, fontSize: 30 },
+        { value: '听妈妈的话吧，晚点再恋爱吧！爱呢？', time: 15 },
+    ];
+    let doc = document;
+    let canvas = doc.getElementById('canvas');
+    let video = doc.getElementById('video');
+    let $txt = doc.getElementById('text');
+    let $btn = doc.getElementById('btn');
+    let $color = doc.getElementById('color');
+    let $range = doc.getElementById('range');
+    let canvasBarrage;
+    // 创建CanvasBarrage实例
+    canvasBarrage = new CanvasBarrage(canvas, video, { data });
+    // 设置video的play事件来调用CanvasBarrage实例的render方法
+    video.onpause = () => {
+        canvasBarrage.isPaused = true;
+    }
+    video.onplay = () => {
+        canvasBarrage.isPaused = false;
+    }
+    // 拖动进度条时触发seeked事件
+    video.onseeked = () => {
+        // 调用CanvasBarrage类的replay方法进行回放，重新渲染弹幕
+        canvasBarrage.replay();
+    };
+
+
+</script>
+<script src="js/addBarrage.js"></script>
+
+</html>
